@@ -8,12 +8,12 @@ const __dirname = dirname(__filename);
 
 export const DICE_COMMAND = new SlashCommandBuilder()
 	.setName('dice')
-	.setDescription('Roll a dice')
-	.addStringOption((option) => option.setName('input').setDescription('input'))
-	.addStringOption((option) => option.setName('amount').setDescription('amount'))
+	.setDescription('サイコロを振る')
+	.addStringOption((option) => option.setName('input').setDescription('dicedice-dice'))
+	.addStringOption((option) => option.setName('amount').setDescription('e.g. 1d100, 2d6'))
 	.toJSON();
 
-export const FORTUNE_COMMAND = new SlashCommandBuilder().setName('おみくじ').setDescription('おみくじ').toJSON();
+export const FORTUNE_COMMAND = new SlashCommandBuilder().setName('おみくじ').setDescription('おみくじを引く').toJSON();
 
 export const COMMANDS = { DICE_COMMAND, FORTUNE_COMMAND };
 

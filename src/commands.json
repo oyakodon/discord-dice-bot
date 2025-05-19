@@ -4,24 +4,24 @@
       {
         "type": 3,
         "name": "input",
-        "description": "input",
+        "description": "dicedice-dice",
         "required": false
       },
       {
         "type": 3,
         "name": "amount",
-        "description": "amount",
+        "description": "e.g. 1d100, 2d6",
         "required": false
       }
     ],
     "name": "dice",
-    "description": "Roll a dice",
+    "description": "サイコロを振る",
     "type": 1
   },
   "FORTUNE_COMMAND": {
     "options": [],
     "name": "おみくじ",
-    "description": "おみくじ",
+    "description": "おみくじを引く",
     "type": 1
   }
 }

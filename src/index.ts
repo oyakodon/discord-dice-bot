@@ -66,13 +66,9 @@ export default {
 						},
 					});
 				}
-
-				default:
-					return Response.json({ error: 'Unknown Type' }, { status: 400 });
 			}
 		}
 
-		console.error('Unknown Type');
 		return Response.json({ error: 'Unknown Type' }, { status: 400 });
 	},
 } satisfies ExportedHandler<Env>;

@@ -1,5 +1,5 @@
 import { InteractionResponseType, verifyKey } from 'discord-interactions';
-import { APIInteraction, InteractionType } from 'discord-api-types/v10';
+import { APIApplicationCommandInteraction, APIInteraction, InteractionType } from 'discord-api-types/v10';
 import { DICE_COMMAND } from './commands.json';
 
 export default {
@@ -18,8 +18,37 @@ export default {
 		}
 
 		if (interaction.type === InteractionType.ApplicationCommand) {
-			switch (interaction.data.name.toLowerCase()) {
+			const command = interaction as APIApplicationCommandInteraction;
+
+			switch (command.data.name.toLowerCase()) {
 				case DICE_COMMAND.name.toLowerCase(): {
+					const options = (command.data as any).options as {
+						name: string;
+						type: number;
+						value?: string | number | boolean;
+					}[];
+
+					if (options && options.length > 0) {
+						const option = options[0];
+						switch (option.name.toLowerCase()) {
+							case 'input':
+								const input = option.value as string;
+								console.log('Input:', input);
+								break;
+							case 'amount':
+								const amount = option.value as string;
+								console.log('Amount:', amount);
+								break;
+							case 'おみくじ':
+								const isValid = option.value as boolean;
+								console.log('おみくじ:', isValid);
+								break;
+							default:
+								console.log('Unknown option:', option.name);
+								break;
+						}
+					}
+
 					return Response.json({
 						type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
 						data: {

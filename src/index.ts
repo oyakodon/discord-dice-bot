@@ -1,6 +1,8 @@
 import { InteractionResponseType, verifyKey } from 'discord-interactions';
 import { APIApplicationCommandInteraction, APIInteraction, InteractionType } from 'discord-api-types/v10';
 import { DICE_COMMAND } from './commands.json';
+import dice from './dice';
+import fortune from './fortune';
 
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext) {
@@ -33,20 +35,25 @@ export default {
 						switch (option.name.toLowerCase()) {
 							case 'input':
 								const input = option.value as string;
-								console.log('Input:', input);
+								console.log(`input: ${dice.replaceDice(input)}`);
 								break;
 							case 'amount':
 								const amount = option.value as string;
-								console.log('Amount:', amount);
+								console.log(`amount: ${dice.rollDice(amount)}`);
 								break;
 							case 'おみくじ':
 								const isValid = option.value as boolean;
-								console.log('おみくじ:', isValid);
+								if (isValid) {
+									console.log(`fortune: ${fortune.pick()}`);
+								}
+
 								break;
 							default:
 								console.log('Unknown option:', option.name);
 								break;
 						}
+					} else {
+						console.log(`default: ${dice.rollDice()}`);
 					}
 
 					return Response.json({

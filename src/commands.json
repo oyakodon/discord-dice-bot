@@ -12,16 +12,16 @@
         "name": "amount",
         "description": "amount",
         "required": false
-      },
-      {
-        "name": "おみくじ",
-        "description": "おみくじ",
-        "required": false,
-        "type": 5
       }
     ],
     "name": "dice",
     "description": "Roll a dice",
+    "type": 1
+  },
+  "FORTUNE_COMMAND": {
+    "options": [],
+    "name": "おみくじ",
+    "description": "おみくじ",
     "type": 1
   }
 }

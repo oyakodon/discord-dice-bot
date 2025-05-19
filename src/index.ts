@@ -1,6 +1,6 @@
 import { InteractionResponseType, verifyKey } from 'discord-interactions';
 import { APIApplicationCommandInteraction, APIInteraction, InteractionType } from 'discord-api-types/v10';
-import { DICE_COMMAND } from './commands.json';
+import { DICE_COMMAND, FORTUNE_COMMAND } from './commands.json';
 import dice from './dice';
 import fortune from './fortune';
 
@@ -41,13 +41,6 @@ export default {
 								const amount = option.value as string;
 								console.log(`amount: ${dice.rollDice(amount)}`);
 								break;
-							case 'おみくじ':
-								const isValid = option.value as boolean;
-								if (isValid) {
-									console.log(`fortune: ${fortune.pick()}`);
-								}
-
-								break;
 							default:
 								console.log('Unknown option:', option.name);
 								break;
@@ -60,6 +53,15 @@ export default {
 						type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
 						data: {
 							content: 'success',
+						},
+					});
+				}
+
+				case FORTUNE_COMMAND.name.toLowerCase(): {
+					return Response.json({
+						type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+						data: {
+							content: fortune.pick(),
 						},
 					});
 				}

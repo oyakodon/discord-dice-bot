@@ -11,8 +11,11 @@ export const DICE_COMMAND = new SlashCommandBuilder()
 	.setDescription('Roll a dice')
 	.addStringOption((option) => option.setName('input').setDescription('input'))
 	.addStringOption((option) => option.setName('amount').setDescription('amount'))
-	.addBooleanOption((option) => option.setName('おみくじ').setDescription('おみくじ'))
 	.toJSON();
 
+export const FORTUNE_COMMAND = new SlashCommandBuilder().setName('おみくじ').setDescription('おみくじ').toJSON();
+
+export const COMMANDS = { DICE_COMMAND, FORTUNE_COMMAND };
+
 const outputPath = join(__dirname, '../src', 'commands.json');
-await fs.writeFile(outputPath, JSON.stringify({ DICE_COMMAND }, null, 2));
+await fs.writeFile(outputPath, JSON.stringify(COMMANDS, null, 2));

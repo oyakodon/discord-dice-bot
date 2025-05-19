@@ -1,4 +1,4 @@
-import { DICE_COMMAND } from './builder';
+import { COMMANDS } from './builder';
 import dotenv from 'dotenv';
 import process from 'node:process';
 
@@ -32,7 +32,7 @@ const response = await fetch(url, {
 		Authorization: `Bot ${token}`,
 	},
 	method: 'PUT',
-	body: JSON.stringify([DICE_COMMAND]),
+	body: JSON.stringify(Object.values(COMMANDS)),
 });
 
 if (response.ok) {

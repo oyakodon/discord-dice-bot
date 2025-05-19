@@ -1,4 +1,4 @@
-import { DICE_COMMAND } from '../src/commands';
+import { DICE_COMMAND } from './builder';
 import dotenv from 'dotenv';
 import process from 'node:process';
 

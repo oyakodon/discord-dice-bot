@@ -1,0 +1,27 @@
+{
+  "DICE_COMMAND": {
+    "options": [
+      {
+        "type": 3,
+        "name": "input",
+        "description": "input",
+        "required": false
+      },
+      {
+        "type": 3,
+        "name": "amount",
+        "description": "amount",
+        "required": false
+      },
+      {
+        "name": "おみくじ",
+        "description": "おみくじ",
+        "required": false,
+        "type": 5
+      }
+    ],
+    "name": "dice",
+    "description": "Roll a dice",
+    "type": 1
+  }
+}

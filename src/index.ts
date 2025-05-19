@@ -1,5 +1,5 @@
 import { InteractionResponseType, InteractionType, verifyKey } from 'discord-interactions';
-import { DICE_COMMAND } from './commands.js';
+import { DICE_COMMAND } from './commands.json';
 
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext) {

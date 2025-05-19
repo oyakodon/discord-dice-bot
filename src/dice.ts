@@ -25,7 +25,7 @@ function dice(randomFn: () => number = Math.random) {
 			const dicePattern = /サイコロ|[dD][iI][cC][eE]/g;
 			const match = input.match(dicePattern);
 			if (!match) {
-				throw new Error('Invalid input format');
+				return input;
 			}
 
 			const dice = input.replace(dicePattern, () => {
@@ -50,7 +50,12 @@ function dice(randomFn: () => number = Math.random) {
 				sides = parseInt(match[2], 10);
 			}
 
-			return this.toEmoji(this.roll(count, sides));
+			const result = this.roll(count, sides);
+			if (sides > 6) {
+				return result.map((die) => `[${die}]`).join(' ');
+			}
+
+			return this.toEmoji(result);
 		},
 	};
 }

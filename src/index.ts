@@ -30,29 +30,30 @@ export default {
 						value?: string | number | boolean;
 					}[];
 
+					let content = '';
 					if (options && options.length > 0) {
 						const option = options[0];
 						switch (option.name.toLowerCase()) {
 							case 'input':
 								const input = option.value as string;
-								console.log(`input: ${dice.replaceDice(input)}`);
+								content = dice.replaceDice(input);
 								break;
 							case 'amount':
 								const amount = option.value as string;
-								console.log(`amount: ${dice.rollDice(amount)}`);
+								content = dice.rollDice(amount);
 								break;
 							default:
 								console.log('Unknown option:', option.name);
-								break;
+								return Response.json({ error: 'Unknown option' }, { status: 400 });
 						}
 					} else {
-						console.log(`default: ${dice.rollDice()}`);
+						content = dice.rollDice();
 					}
 
 					return Response.json({
 						type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
 						data: {
-							content: 'success',
+							content,
 						},
 					});
 				}

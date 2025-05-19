@@ -1,4 +1,5 @@
-import { InteractionResponseType, InteractionType, verifyKey } from 'discord-interactions';
+import { InteractionResponseType, verifyKey } from 'discord-interactions';
+import { APIInteraction, InteractionType } from 'discord-api-types/v10';
 import { DICE_COMMAND } from './commands.json';
 
 export default {
@@ -12,11 +13,11 @@ export default {
 			return new Response('Bad request signature.', { status: 401 });
 		}
 
-		if (interaction.type === InteractionType.PING) {
+		if (interaction.type === InteractionType.Ping) {
 			return Response.json({ type: InteractionResponseType.PONG });
 		}
 
-		if (interaction.type === InteractionType.APPLICATION_COMMAND) {
+		if (interaction.type === InteractionType.ApplicationCommand) {
 			switch (interaction.data.name.toLowerCase()) {
 				case DICE_COMMAND.name.toLowerCase(): {
 					return Response.json({
@@ -37,7 +38,7 @@ export default {
 	},
 } satisfies ExportedHandler<Env>;
 
-async function verifyDiscordRequest(request: Request, env: Env) {
+async function verifyDiscordRequest(request: Request, env: Env): Promise<{ interaction?: APIInteraction; isValid: boolean }> {
 	const signature = request.headers.get('x-signature-ed25519');
 	const timestamp = request.headers.get('x-signature-timestamp');
 	const body = await request.text();
@@ -46,5 +47,5 @@ async function verifyDiscordRequest(request: Request, env: Env) {
 		return { isValid: false };
 	}
 
-	return { interaction: JSON.parse(body), isValid: true };
+	return { interaction: JSON.parse(body) satisfies APIInteraction, isValid: true };
 }

@@ -10,6 +10,7 @@
       "devDependencies": {
         "@cloudflare/vitest-pool-workers": "^0.8.19",
         "@cloudflare/workers-types": "^4.20250517.0",
+        "discord-api-types": "^0.38.8",
         "dotenv": "^16.5.0",
         "typescript": "^5.5.2",
         "vitest": "~3.0.7",

@@ -1,0 +1,27 @@
+{
+  "DICE_COMMAND": {
+    "options": [
+      {
+        "type": 3,
+        "name": "input",
+        "description": "dicedice-dice",
+        "required": false
+      },
+      {
+        "type": 3,
+        "name": "amount",
+        "description": "e.g. 1d100, 2d6",
+        "required": false
+      }
+    ],
+    "name": "dice",
+    "description": "サイコロを振る",
+    "type": 1
+  },
+  "FORTUNE_COMMAND": {
+    "options": [],
+    "name": "おみくじ",
+    "description": "おみくじを引く",
+    "type": 1
+  }
+}
